@@ -1,0 +1,65 @@
+[project]
+name = "pyt_dl"
+version = "0.1.0"
+description = "pyt_dl"
+authors = [
+    {name = "Nasy", email = "nasyxx+python@gmail.com"},
+    {name = "Nasy", email = "nasyxx+git@gmail.com"},
+]
+dependencies = [
+    "equinox>=0.11.4",
+    "tyro>=0.8.3",
+    "nadl>=1.0.0",
+]
+requires-python = ">=3.12,<3.13"
+readme = {content-type = "text/plain", file="readme.org"}
+license = {text = "GPLv3"}
+
+[tool.pdm]
+distribution = false
+[[tool.pdm.source]]
+url = "https://storage.googleapis.com/jax-releases/jax_cuda_releases.html"
+name = "jaxlib"
+verify_ssl = true
+type = "find_links"
+
+
+
+[tool.mypy]
+mypy_path = "./typings"
+exclude = [
+  "__pypackages__/",
+  "./typings",  # for pyright autogen stubs
+]
+
+follow_imports = "silent"
+follow_imports_for_stubs = true
+
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+
+implicit_optional = true
+
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_unreachable = true
+
+strict_equality = true
+strict = true
+
+warn_unused_configs = true
+
+[tool.pyright]
+pythonVersion = "3.12"
+extraPaths = [
+  "__pypackages__/3.11/lib",
+  "__pypackages__/3.12/lib",
+  "src",
+]
+
+exclude = [
+    "**/__pycache__",
+]
+
+useLibraryCodeForTypes = true
